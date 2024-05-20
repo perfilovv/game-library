@@ -1,12 +1,12 @@
-import GameCards from '@/components/GameCard';
+import GameCard from '@/components/GameCard';
 import React from 'react';
 
-const index = () => {
+const Home = () => {
   return (
     <>
-      <GameCards />
+      <GameCard />
     </>
   );
 };
 
-export default index;
+export default Home;
