@@ -13,18 +13,22 @@ interface Game {
 
 const GameCard: FC = () => {
   const [games, setGames] = useState<Game[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchGames = async () => {
       try {
         const response = await axios.get('/api/games');
         setGames(response.data);
-      } catch (error) {}
+      } catch (error) {
+        setError('Error fetching games');
+      }
     };
     fetchGames();
   }, []);
   return (
     <div className='container mx-auto p-4'>
+      {error && <div className='text-red-500 text-center'>{error}</div>}
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
         {games &&
           games.map((game) => (
