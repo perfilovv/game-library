@@ -6,7 +6,12 @@ const config: Config = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      boxShadow: {
+        '1': '0 .125rem 1rem rgba(0, 0, 0, .08)',
+        '2': '0 2px 16px rgba(0,0,0,.32)',
+      },
+    },
   },
   plugins: [],
 };

@@ -41,29 +41,36 @@ const GameCard: FC = () => {
   return (
     <div className='container mx-auto p-4'>
       {error && <div className='text-red-500 text-center'>{error}</div>}
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
         {games &&
           games.map(
             (
               { id, name, rating, platforms, language_supports, cover },
               index
             ) => (
-              <div key={id} className='bg-gray-100 p-4 rounded-lg shadow-md'>
-                <h2 className='text-xl font-semibold mb-2'>
-                  {index + 1}. {name}
-                </h2>
-                <p>Rating: {Math.round(rating)}</p>
-                <p>
+              <div
+                key={id}
+                className='p-4 rounded-lg shadow-1 flex h-40 gap-4 hover:shadow-2 cursor-pointer'
+              >
+                <div className='h-full w-[88px] flex-shrink-0'>
+                  <Image
+                    src={`https:${cover.url}`}
+                    alt={`Cover for ${name}`}
+                    width={90}
+                    height={90}
+                    className='h-full w-full rounded-lg'
+                  />
+                </div>
+                <div>
+                  <h2 className='text-l font-semibold mb-2'>
+                    {index + 1}. {name}
+                  </h2>
+                  <p>Rating: {Math.round(rating)}</p>
+                  {/* <p>
                   Platforms:{' '}
                   {platforms.map((platform) => platform.name).join(', ')}
-                </p>
-                <Image
-                  src={`https:${cover.url}`}
-                  alt={`Cover for ${name}`}
-                  width={132}
-                  height={132}
-                />
-                <p>Max Players Online:</p>
+                </p> */}
+                  {/* <p>Max Players Online:</p>
                 <p>Max Players Offline:</p>
                 <p>
                   Languages:{' '}
@@ -73,7 +80,8 @@ const GameCard: FC = () => {
                         {support.language.name + ', '}
                       </Fragment>
                     ))}
-                </p>
+                </p> */}
+                </div>
               </div>
             )
           )}
