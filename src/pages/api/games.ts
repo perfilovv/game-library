@@ -42,8 +42,16 @@ export default async function handler(
         headers,
       }
     );
-    console.log('Response from IGDB API:', response.data);
-    res.status(200).json(response.data);
+
+    const games = response.data.map((game: { cover: { url: string } }) => ({
+      ...game,
+      cover: {
+        ...game.cover,
+        url: game.cover.url.replace('t_thumb', 't_cover_small'),
+      },
+    }));
+    console.log('Response from IGDB API:', games);
+    res.status(200).json(games);
   } catch (error) {
     console.error('Error fetching data from IGDB API:', error);
     const message =

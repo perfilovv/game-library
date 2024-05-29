@@ -1,26 +1,7 @@
 import axios from 'axios';
 import Image from 'next/image';
-import { FC, Fragment, useEffect, useState } from 'react';
-
-interface Game {
-  id: number;
-  name: string;
-  rating: number;
-  platforms: {
-    name: string;
-  }[];
-  maxPlayersOnline: number;
-  maxPlayersOffline: number;
-  language_supports: {
-    id: number;
-    language: {
-      name: string;
-    };
-  }[];
-  cover: {
-    url: string;
-  };
-}
+import { FC, useEffect, useState } from 'react';
+import { Game } from '@/types';
 
 const GameCard: FC = () => {
   const [games, setGames] = useState<Game[]>([]);
@@ -50,15 +31,15 @@ const GameCard: FC = () => {
             ) => (
               <div
                 key={id}
-                className='p-4 rounded-lg shadow-1 flex h-40 gap-4 hover:shadow-2 cursor-pointer'
+                className='p-4 rounded-lg shadow-1 flex h-38 gap-4 hover:shadow-2 cursor-pointer'
               >
-                <div className='h-full w-[88px] flex-shrink-0'>
+                <div className='h-full w-[90px] flex-shrink-0'>
                   <Image
                     src={`https:${cover.url}`}
                     alt={`Cover for ${name}`}
                     width={90}
-                    height={90}
-                    className='h-full w-full rounded-lg'
+                    height={120}
+                    className='rounded-lg'
                   />
                 </div>
                 <div>
